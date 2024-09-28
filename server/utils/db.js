@@ -7,10 +7,12 @@ const con = mysql.createConnection({
     database: 'user_management'
 })
 
-con.connect = (function (err) {
+con.connect ((err) => {
     if (err) {
-        console.log("Connection Failed")
+        console.log("Connection Failed: ", err)
     } else {
         console.log('Connection Success')
     }
 })
+
+export default con;
