@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, Outlet } from "react-router-dom"
 import {
   Bell,
   CircleUser,
@@ -43,7 +43,7 @@ const Dashboard = () => {
               <Package2 className="h-6 w-6" />
               <span className="">Sample</span>
             </Link>
-            <Button variant="outline" size="icon" className="ml-auto h-8 w-8">
+            <Button variant="outline" size="icon" className="ml-auto h-8 w-8 ">
               <Bell className="h-4 w-4" />
               <span className="sr-only">Toggle notifications</span>
             </Button>
@@ -58,7 +58,7 @@ const Dashboard = () => {
                 Dashboard
               </Link>
               <Link
-                to="/dashboard"
+                to="/dashboard/employee"
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
                 <ShoppingCart className="h-4 w-4" />
@@ -68,18 +68,19 @@ const Dashboard = () => {
                 </Badge> */}
               </Link>
               <Link
-                to='/dashboard'
+                to='/dashboard/category'
                 className="flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary"
               >
                 <Package className="h-4 w-4" />
                 Category
               </Link>
-              <Link
-                href="#"
+              <Link 
+              to='/dashboard/profile'
+    
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
                 <Users className="h-4 w-4" />
-                Users
+                Profile
               </Link>
              
             </nav>
@@ -167,16 +168,7 @@ const Dashboard = () => {
             </SheetContent>
           </Sheet>
           <div className="w-full flex-1">
-            <form>
-              <div className="relative">
-                <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-                <Input
-                  type="search"
-                  placeholder="Search products..."
-                  className="w-full appearance-none bg-background pl-8 shadow-none md:w-2/3 lg:w-1/3"
-                />
-              </div>
-            </form>
+           
           </div>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -186,33 +178,28 @@ const Dashboard = () => {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <Link to='/Profile'>
-              <DropdownMenuLabel>My Account</DropdownMenuLabel>
-              </Link>
+
+              <DropdownMenuLabel>Profile</DropdownMenuLabel>
+            
              
               <DropdownMenuSeparator />
               <DropdownMenuItem>Settings</DropdownMenuItem>
-              <DropdownMenuItem>Support</DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Logout</DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link to='/dashboard/logout'></Link>
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </header>
+
         <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
-         
+     
           <div
-            className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm" x-chunk="dashboard-02-chunk-1"
+            className="flex flex-1 rounded-lg border px-6 py-5 border-dashed shadow-sm " x-chunk="dashboard-02-chunk-1"
           >
-            <div className="flex flex-col items-center gap-1 text-center">
-              <h3 className="text-2xl font-bold tracking-tight">
-                You have no products
-              </h3>
-              <p className="text-sm text-muted-foreground">
-                You can start selling as soon as you add a product.
-              </p>
-              <Button className="mt-4">Add Product</Button>
-            </div>
+           <Outlet/>
           </div>
+
         </main>
       </div>
     </div>
